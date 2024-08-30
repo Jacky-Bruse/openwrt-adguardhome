@@ -74,3 +74,4 @@ endef
 $(eval $(call Download,adguardhome-frontend))
 $(eval $(call GoBinPackage,adguardhome))
 $(eval $(call BuildPackage,adguardhome))
+
