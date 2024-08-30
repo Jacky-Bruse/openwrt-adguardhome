@@ -6,12 +6,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=adguardhome
-PKG_VERSION:=0.107.51
-PKG_RELEASE:=1
+PKG_VERSION:=0.107.52
+PKG_RELEASE:=131
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/AdguardTeam/AdGuardHome/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=dea9685282e55940925ff7211f7d72072de5b98134c8f01d5569c04284681650
+PKG_HASH:=skip
 PKG_BUILD_DIR:=$(BUILD_DIR)/AdGuardHome-$(PKG_VERSION)
 
 PKG_LICENSE:=GPL-3.0-only
@@ -34,7 +34,7 @@ GO_PKG_LDFLAGS_X:= \
 	$(GO_PKG)/internal/version.gomips=$(GO_MIPS)
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/adguardhome
   SECTION:=net
@@ -58,7 +58,7 @@ define Download/adguardhome-frontend
 	URL:=https://github.com/AdguardTeam/AdGuardHome/releases/download/v$(PKG_VERSION)/
 	URL_FILE:=AdGuardHome_frontend.tar.gz
 	FILE:=$(FRONTEND_FILE)
-	HASH:=253d05185865840e14e841e4245c3fdb0fdcca28649902303d3869e0bd07cfd7
+	HASH:=skip
 endef
 
 define Build/Prepare
@@ -74,4 +74,3 @@ endef
 $(eval $(call Download,adguardhome-frontend))
 $(eval $(call GoBinPackage,adguardhome))
 $(eval $(call BuildPackage,adguardhome))
-
